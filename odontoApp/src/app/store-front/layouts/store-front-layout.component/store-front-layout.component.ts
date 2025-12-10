@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { FrontNavbarComponent } from "../../front-navbar.component/front-navbar.component";
+import { FrontNavbarComponent } from "../../components/front-navbar.component/front-navbar.component";
 
 @Component({
   selector: 'app-store-front-layout.component',
