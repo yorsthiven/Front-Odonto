@@ -29,7 +29,6 @@ export class HomePageComponent {
         gender: 'women',
       })
       .subscribe((resp) => {
-        console.log('Respuesta del servicio:', resp);
         this.productsResponse.set(resp);
       });
   });
