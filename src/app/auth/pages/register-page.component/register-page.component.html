@@ -1,7 +1,13 @@
-<h1 class="font-bold text-secondary text-center mb-3">Registro de nuevo usuario</h1>
-<form class="flex flex-col gap-2" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-  <label class="input validator">
-    <svg class="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+<h1 class="text-3xl font-bold text-primary text-center mb-6">Registro de nuevo usuario</h1>
+
+<form class="flex flex-col gap-6 text-base" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+  <!-- Email -->
+  <label class="input input-bordered flex items-center gap-4 h-16 text-lg w-full validator">
+    <svg
+      class="h-7 w-7 text-primary shrink-0"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+    >
       <g
         stroke-linejoin="round"
         stroke-linecap="round"
@@ -13,11 +19,23 @@
         <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
       </g>
     </svg>
-    <input type="email" placeholder="mail@site.com" required formControlName="email" />
+    <input
+      type="email"
+      placeholder="mail@site.com"
+      required
+      formControlName="email"
+      class="grow text-base"
+    />
   </label>
-  <div class="validator-hint hidden">Ingrese un correo válido</div>
-  <label class="input validator">
-    <svg class="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <div class="validator-hint hidden text-sm text-error">Ingrese un correo válido</div>
+
+  <!-- Password -->
+  <label class="input input-bordered flex items-center gap-4 h-16 text-lg w-full validator">
+    <svg
+      class="h-7 w-7 text-primary shrink-0"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+    >
       <g
         stroke-linejoin="round"
         stroke-linecap="round"
@@ -33,22 +51,29 @@
     </svg>
     <input
       type="password"
-      required
       placeholder="Contraseña"
+      required
       minlength="6"
-      title="Must be more than 8 characters, including number, lowercase letter, uppercase letter"
-      formControlName="password"
+      title="Debe tener mínimo de 6 caracteres, incluyendo número, minúscula y mayúscula"
       pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"
+      formControlName="password"
+      class="grow text-base"
     />
-    <!-- pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"  // patron para validar que tenga lo necesario para contraseña, es bueno pero para el registro -->
   </label>
-  <p class="validator-hint hidden">
-    Debe tener mínimo de 6 caracteres, incluyendo
-    <br />Al menos un número <br />Al menos una letra minúscula <br />Al menos una letra mayúscula
-    letter
+  <p class="validator-hint hidden text-sm text-error">
+    Debe tener mínimo de 6 caracteres, incluyendo<br />
+    Al menos un número<br />
+    Al menos una letra minúscula<br />
+    Al menos una letra mayúscula
   </p>
-  <label class="input validator">
-    <svg class="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+
+  <!-- Full Name -->
+  <label class="input input-bordered flex items-center gap-4 h-16 text-lg w-full validator">
+    <svg
+      class="h-7 w-7 text-primary shrink-0"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+    >
       <g
         stroke-linejoin="round"
         stroke-linecap="round"
@@ -62,27 +87,31 @@
     </svg>
     <input
       type="text"
-      required
       placeholder="Nombre completo"
-      pattern="[A-Za-z][A-Za-z0-9\-]*"
+      required
       minlength="3"
       maxlength="30"
+      pattern="[A-Za-z][A-Za-z0-9\-]*"
       formControlName="fullName"
-      title="Only letters, numbers or dash"
+      title="Solo letras, números o guiones"
+      class="grow text-base"
     />
   </label>
-  <p class="validator-hint hidden">
-    Su nombre debe tener entre 3 y 30 caracteres.
-    <br />Contener solo letras, números o guiones.
+  <p class="validator-hint hidden text-sm text-error">
+    Su nombre debe tener entre 4 y 30 caracteres.<br />
+    Contener solo letras, números o guiones.
   </p>
 
-  <button type="submit" class="btn btn-secondary">Registrar</button>
+  <!-- Submit -->
+  <button type="submit" class="btn btn-primary w-full h-14 text-lg">Registrar</button>
 </form>
 
 <!-- alerta de Error -->
 @if (hasError()) {
-
-<div role="alert" class="alert alert-error animate-fadeIn fixed bottom-5 right-5 w-52">
+<div
+  role="alert"
+  class="alert alert-error animate-fadeIn fixed bottom-5 right-5 w-72 shadow-lg text-base"
+>
   <svg
     xmlns="http://www.w3.org/2000/svg"
     class="h-6 w-6 shrink-0 stroke-current"
@@ -99,12 +128,13 @@
   <span>{{ successMessage() }}</span>
 </div>
 }
-<!-- alerta de Error -->
 
 <!-- alerta de Registrado -->
-<!-- alerta de Registrado -->
 @if (registerOk()) {
-<div role="alert" class="alert alert-success animate-fadeIn fixed bottom-5 right-5 w-52">
+<div
+  role="alert"
+  class="alert alert-success animate-fadeIn fixed bottom-5 right-5 w-72 shadow-lg text-base"
+>
   <svg
     xmlns="http://www.w3.org/2000/svg"
     class="h-6 w-6 shrink-0 stroke-current"
@@ -121,4 +151,3 @@
   <span>Registro completado! Vamos a iniciar sesión</span>
 </div>
 }
-<!-- alerta de Registrado -->

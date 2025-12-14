@@ -1,4 +1,4 @@
-<h1 class="text-3xl font-bold mt-6">Opciones</h1>
+<!-- <h1 class="text-3xl font-bold mt-6">Opciones</h1>
 
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mt2 gap-3">
   @for (product of productsResponse().products; track $index) {
@@ -6,8 +6,41 @@
   <product-card [product]="product" />
 
   }
-  <!-- Empty -->
   @empty{
-  <p>No hay nada de productos</p>
+    <p>No hay nada de productos</p>
   }
+</div> -->
+<!-- Empty -->
+
+<div class="container mx-auto px-8">
+  <div class="grid grid-cols-12 gap-6 p-6">
+    <!-- 🟣 Zona morada: productos (col-span-8) -->
+    <div class="col-span-12 md:col-span-8 p-4 rounded-lg overflow-y-auto max-h-[70vh]">
+      <h2 class="text-xl font-bold  mb-4">Productos</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        @for (product of productsResponse().products; track $index) {
+        <product-card [product]="product" />
+        } @empty {
+        <p class="text-gray-500">No hay nada de productos</p>
+        }
+      </div>
+    </div>
+
+ <!-- 🟢 Zona verde: imagen (col-span-4) -->
+<div class="col-span-12 md:col-span-4 p-4 rounded-lg  flex items-center justify-center">
+  <img
+    src="/assets/images/logo-doctor-diente.png"
+    alt="Imagen decorativa"
+    class="h-full w-auto object-contain rounded-full shadow max-h-[50vh]"
+  />
+</div>
+
+    <!-- 🔴 Zona roja: bienvenida (col-span-12) -->
+    <div
+      class="col-span-12 p-4 rounded-lg shadow-md flex flex-col justify-center items-center text-center"
+    >
+      <h2 class="text-2xl font-bold text-red-800 mb-2">¡Bienvenido!</h2>
+      <p class="text-gray-700 text-sm">Nos alegra tenerte aquí, <span class="text-info text-2xl">{{ authService.user()?.fullName }}.</span></p>
+    </div>
+  </div>
 </div>

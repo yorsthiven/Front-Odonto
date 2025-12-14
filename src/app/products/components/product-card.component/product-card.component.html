@@ -1,4 +1,4 @@
-<div class="card bg-base-100  shadow-sm animate-fadeIn">
+<!-- <div class="card bg-base-100  shadow-sm animate-fadeIn">
   <figure class="px-10 pt-10">
     <img
       [src]="product().images | productImage"
@@ -11,5 +11,35 @@
     <div class="card-actions">
       <a class="link link-accent" [routerLink]="['/product',product().slug]"> Ver más</a>
     </div>
+  </div>
+</div> -->
+<div
+  class="card bg-base-100 shadow-sm hover:shadow-md border rounded-lg p-3 flex flex-col gap-3 max-h-64 overflow-hidden text-sm"
+>
+  <!-- Nombre del producto -->
+  <div class="text-center">
+    <h2
+      class="text-base font-semibold text-accent hover:underline"
+      [routerLink]="['/product', product().slug]"
+    >
+      {{ product().title }}
+    </h2>
+  </div>
+
+  <!-- Imagen del producto -->
+  <div class="flex justify-center">
+    <img
+      [src]="product().images | productImage"
+      alt="{{ product().title }}"
+      class="h-24 object-contain rounded"
+    />
+  </div>
+
+  <!-- Descripción + botón -->
+  <div class="text-center">
+    <p class="text-xs text-gray-600 mb-1">{{ product().description | slice : 0 : 60 }}...</p>
+    <a class="link link-accent text-xs font-medium" [routerLink]="['/product', product().slug]">
+      Ver más
+    </a>
   </div>
 </div>

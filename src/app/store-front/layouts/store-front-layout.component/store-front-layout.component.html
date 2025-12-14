@@ -1,6 +1,25 @@
-<!-- navbar -->
-<front-navbar/>
+<div class="min-h-screen flex flex-col">
+  <!-- Navbar -->
+  <front-navbar />
+
+  <!-- Contenido principal -->
+  <main class="grow">
+    <section class="container mx-auto">
+      <router-outlet />
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <front-footer />
+</div>
+
+
+<!-- navbar
+<front-navbar />
 
 <section class="container mx-auto">
   <router-outlet />
 </section>
+
+<front-footer class="footer items-center p-6 bg-white text-gray-800" />
+ -->
