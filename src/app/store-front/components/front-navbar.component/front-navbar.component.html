@@ -1,0 +1,46 @@
+<nav class="bg-white shadow-md px-6 py-3 flex items-center justify-between">
+  <!-- Logo y nombre -->
+  <div class="flex items-center gap-3">
+    <img src="/assets/images/logo-healthy-teeth.png" alt="Logo" class="h-8 w-8" />
+    <a routerLink="/" class="text-xl font-semibold text-gray-800">
+      Healthy <span class="text-green-500">Teeth</span>
+    </a>
+  </div>
+
+  <!-- Menú principal (desktop) -->
+  <ul class="hidden md:flex gap-6 text-sm font-medium text-gray-700">
+    <li>
+      <a routerLink="/gender/men" routerLinkActive="text-green-500">Hombres</a>
+    </li>
+    <li>
+      <a routerLink="/gender/women" routerLinkActive="text-green-500">Mujeres</a>
+    </li>
+    <li>
+      <a routerLink="/gender/kids" routerLinkActive="text-green-500">Niños</a>
+    </li>
+  </ul>
+
+  <!-- Botones de sesión -->
+  <div class="flex items-center gap-4">
+    @if (authService.authStatus() === 'authenticated') {
+      <span class="text-sm text-gray-600">{{ authService.user()?.fullName }}</span>
+      <button class="text-sm text-red-500 hover:underline" (click)="logout()">Salir</button>
+    }
+    @else if (authService.authStatus() === 'not-authenticated') {
+      <a routerLink="/auth/login" class="bg-green-500 text-white px-4 py-1 rounded hover:bg-green-600 text-sm">Login</a>
+    }
+    @else {
+      <span class="text-gray-400 text-sm">...</span>
+    }
+  </div>
+
+  <!-- Menú móvil -->
+  <div class="md:hidden">
+    <button class="text-gray-600 focus:outline-none">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+    </button>
+    <!-- Aquí puedes agregar un menú desplegable si lo necesitas -->
+  </div>
+</nav>
