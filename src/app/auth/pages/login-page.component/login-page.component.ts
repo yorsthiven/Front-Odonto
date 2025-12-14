@@ -15,6 +15,8 @@ export class LoginPageComponent {
   isPosting = signal(false);
   router = inject(Router);
 
+  loading = signal(false);
+
   authService = inject(AuthService);
 
   loginForm = this.fb.group({
@@ -23,12 +25,17 @@ export class LoginPageComponent {
   });
 
   onSubmit() {
+    this.loading.set(true);
     if (this.loginForm.invalid) {
       this.hasError.set(true);
       // this.retornarError();
       setTimeout(() => {
+        this.loading.set(false);
+        setTimeout(() => {
+          this.hasError.set(false);
+        }, 3000);
         this.hasError.set(false);
-      }, 2000);
+      }, 3000);
       return;
     }
 
@@ -36,13 +43,17 @@ export class LoginPageComponent {
 
     this.authService.login(email!, password!).subscribe((isAuthenticated) => {
       if (isAuthenticated) {
-        this.router.navigateByUrl('/');
+        this.router.navigateByUrl('/home');
+        this.loading.set(false);
         return;
       }
       this.hasError.set(true);
       setTimeout(() => {
-        this.hasError.set(false);
-      }, 2000);
+        this.loading.set(false);
+        setTimeout(() => {
+          this.hasError.set(false);
+        }, 3000);
+      }, 3000);
     });
   }
 

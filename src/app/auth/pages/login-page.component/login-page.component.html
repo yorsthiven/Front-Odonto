@@ -37,3 +37,16 @@
     <span>Por favor, revise la información.</span>
   </div>
 }
+
+<!-- Overlay de carga -->
+@if (this.loading()) {
+
+<div class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+  <div class="bg-white p-6 rounded-lg shadow-lg flex flex-col items-center">
+    <div
+      class="animate-spin rounded-full h-12 w-12 border-t-4 border-blue-500 border-solid mb-4"
+    ></div>
+    <p class="text-gray-700 font-semibold">Verificando credenciales...</p>
+  </div>
+</div>
+}

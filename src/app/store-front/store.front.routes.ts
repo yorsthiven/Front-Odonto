@@ -4,6 +4,8 @@ import { HomePageComponent } from './pages/home-page.component/home-page.compone
 import { GenderPageComponent } from './pages/gender-page.component/gender-page.component';
 import { NotFoundPageComponent } from './pages/not-found-page.component/not-found-page.component';
 import { ProductPageComponent } from './pages/product-page.component/product-page.component';
+import { LoginPageComponent } from '@auth/pages/login-page.component/login-page.component';
+import { AuthLayoutComponent } from '@auth/layout/auth-layout.component/auth-layout.component';
 
 export const storeFrontRutes: Routes = [
   {
@@ -12,6 +14,10 @@ export const storeFrontRutes: Routes = [
     children: [
       {
         path: '',
+        component: AuthLayoutComponent,
+      },
+      {
+        path: 'home',
         component: HomePageComponent,
       },
       {
