@@ -17,6 +17,7 @@ export class RegisterPageComponent {
   router = inject(Router);
   mensaje = signal('');
   successMessage = signal('Verifique datos');
+  loading = signal(false);
 
   authService = inject(AuthService);
 
@@ -27,11 +28,15 @@ export class RegisterPageComponent {
   });
 
   onSubmit() {
+    this.loading.set(true);
     if (this.loginForm.invalid) {
       this.hasError.set(true);
       // this.retornarError();
       setTimeout(() => {
-        this.hasError.set(false);
+        this.loading.set(false);
+        setTimeout(() => {
+          this.hasError.set(false);
+        }, 2000);
       }, 2000);
       return;
     }
@@ -42,12 +47,21 @@ export class RegisterPageComponent {
         this.registerOk.set(true); // activa la alerta de éxito
         setTimeout(() => {
           this.registerOk.set(false);
+          this.loading.set(false);
           this.router.navigateByUrl('/auth/login'); // opcional: redirigir al login
+          setTimeout(() => {
+            this.hasError.set(false);
+          }, 2000);
         }, 5000);
       } else {
         this.successMessage.set('Correo ya registrado, verifique por favor');
         this.hasError.set(true); // activa la alerta de error
-        setTimeout(() => this.hasError.set(false), 3000);
+        setTimeout(() => {
+          this.loading.set(false);
+          setTimeout(() => {
+            this.hasError.set(false);
+          }, 2000);
+        }, 2000);
       }
     });
   }

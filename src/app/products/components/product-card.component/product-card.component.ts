@@ -17,4 +17,6 @@ export class ProductCardComponent {
 
   // -------------------
   product = input.required<Product>();
+
+
 }
