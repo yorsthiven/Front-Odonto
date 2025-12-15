@@ -34,12 +34,13 @@
       class="h-24 object-contain rounded"
     />
   </div>
-<h1>{{product().images }}</h1>
   <!-- Descripción + botón -->
   <div class="text-center">
     <p class="text-xs text-gray-600 mb-1">{{ product().description | slice : 0 : 60 }}...</p>
     <a class="link link-accent text-xs font-medium" [routerLink]="['/product', product().slug]">
       Ver más
     </a>
+    <!-- <h1>{{product().images }}</h1> -->
   </div>
 </div>
+
